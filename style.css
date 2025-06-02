@@ -1,5 +1,5 @@
 body {
-    background: rgb(125, 198, 205);
+    background: rgb(101, 8, 8);
     color: rgb(45, 45, 45);
     padding: 10px;
     font-family: Arial, sans-serif;
@@ -13,11 +13,20 @@ body {
 /* navigation menu */
 nav {
     background: rgb(239, 80, 41);
-    margin: 0 auto;
-    display: flex;
+    /* float:right; */
+    position:relative;
+    top: -100;
     padding: 10px;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    border-radius: 20px;
+    
+}
+
+/* main container area beneath menu */
+main {
+    background: rgb(245, 238, 219);
+    display: flex;
+    margin-top: 20px;
+    border-radius: 20px;
 }
 
 h1 {
@@ -45,12 +54,6 @@ a {
     color: #fff;
 }
 
-/* main container area beneath menu */
-main {
-    background: rgb(245, 238, 219);
-    display: flex;
-    margin-top: 20px;
-}
 
 .sidebar {
     margin-right: 25px;
@@ -58,7 +61,7 @@ main {
 }
 
 .sidebar-img {
-    width: 250px;
+    width: 200px;
 }
 
 .content {
@@ -75,4 +78,66 @@ main {
 
 h2, h3 {
     margin: 0px;
+}
+
+/* Portfolio styles */
+.content h1 {
+  color: black;
+}
+
+#portfolio {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#portfolio li {
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#portfolio li:hover {
+  background: #eee;
+}
+
+#portfolio a {
+  text-decoration: none;
+  color: #454545;
+}
+
+@media screen and (min-width: 120px) and (max-width: 1080px) {
+  main {
+    height: 100ch;
+    zoom: 1.5;
+    display: grid;
+  }
+
+  #all-contents {
+    height: 100ch;
+    margin: none;
+  }
+
+  a {
+    font-size: 42px;
+  }
+
+  .sidebar {
+    margin-right: 0px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar-img {
+    width: 100%;
+  }
+
+  .content {
+    align-content: center;
+    justify-content: center;
+  }
+
+  #portfolio {
+    padding-left: 50px;
+  }
 }
