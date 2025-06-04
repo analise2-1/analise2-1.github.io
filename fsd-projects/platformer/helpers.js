@@ -19,6 +19,15 @@ function main() {
     return;
   }
 
+  if (player.onFloor == true) {
+    //player.deadAndDeathAnimationDone = true;
+    currentAnimationType = animationTypes.frontDeath;
+    changeAnimationType();
+    
+  }
+//x: 341.5, y: 656
+console.log(player.onFloor)  
+
   drawPlatforms();
   drawProjectiles();
   drawCannons();
@@ -248,6 +257,7 @@ function drawRobot() {
 
 function collision() {
   player.onGround = false; // Reset this every frame; if the player is actually on the ground, the resolveCollision function will set it to true
+  
   var result = undefined;
   for (var i = 0; i < platforms.length; i++) {
     // Check for collision
@@ -323,6 +333,10 @@ function resolveCollision(objx, objy, objw, objh) {
       player.x = player.x - originx;
       player.speedX = 0;
     }
+  }
+
+  if (player.y==656){
+    player.onFloor = true;
   }
 
   return collisionDirection;
@@ -555,6 +569,8 @@ function collectablesCollide() {
 function createPlatform(x, y, width, height, color = "grey") {
   platforms.push({ x, y, width, height, color });
 }
+
+
 
 function createCannon(
   wallLocation,

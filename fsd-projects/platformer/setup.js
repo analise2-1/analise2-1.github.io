@@ -24,6 +24,7 @@ const player = {
   width: undefined,
   height: undefined,
   onGround: false,
+  onFloor: false,
   facingRight: true,
   deadAndDeathAnimationDone: false,
 };
