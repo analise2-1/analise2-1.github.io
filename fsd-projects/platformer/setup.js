@@ -27,6 +27,7 @@ const player = {
   onFloor: false,
   facingRight: true,
   deadAndDeathAnimationDone: false,
+  collected: 0,
 };
 
 let hitDx;
@@ -69,6 +70,7 @@ let spriteX = 0;
 let spriteY = 0;
 let offsetX = 0;
 let offsetY = 0;
+let attainables = 1;
 
 // Platform, cannon, projectile, and collectable variables
 let platforms = [];
@@ -99,4 +101,5 @@ var collectableList = {
   kennedi: { image: "images/collectables/kennedi-head.png" },
   max: { image: "images/collectables/max-head.png" },
   steve: { image: "images/collectables/steve-head.png" },
+  wood: {image: "https://img.freepik.com/premium-vector/drawing-piece-wood-with-piece-wood-it_1034910-85509.jpg"},
 };

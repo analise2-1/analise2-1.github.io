@@ -3,10 +3,14 @@ body {
 }
 
 canvas {
-  background-color: lightblue;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/003/093/932/non_2x/cartoon-nature-forest-scenery-free-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw, 10vh;
   margin: 20px;
 }
 
 img {
   display: none;
 }
+
+

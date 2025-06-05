@@ -25,8 +25,11 @@ function main() {
     changeAnimationType();
     
   }
-//x: 341.5, y: 656
-console.log(player.onFloor)  
+
+   if (player.collected == attainables){
+    gameDone()
+    return;
+   }
 
   drawPlatforms();
   drawProjectiles();
@@ -405,6 +408,35 @@ function deathOfPlayer() {
   }
 }
 
+function gameDone() {
+    ctx.fillStyle = "grey";
+  ctx.fillRect(
+    canvas.width / 4,
+    canvas.height / 6,
+    canvas.width / 2,
+    canvas.height / 2
+  );
+  ctx.fillStyle = "black";
+  ctx.font = "450% serif";
+  ctx.fillText(
+    " Congrats you finished!",
+    canvas.width / 4,
+    canvas.height / 6 + canvas.height / 5,
+    (canvas.width / 16) * 14
+  );
+    ctx.font = "300% serif";
+  ctx.fillText(
+    "            Hit any key to restart",
+    canvas.width / 4,
+    canvas.height / 6 + canvas.height / 3,
+    (canvas.width / 16) * 14
+  );
+  if (keyPress.any) {
+    keyPress.any = false;
+    window.location.reload();
+  }
+}
+
 function playerFrictionAndGravity() {
   //max speed limiter for ground
   if (player.speedX > maxSpeed) {
@@ -562,6 +594,7 @@ function collectablesCollide() {
       collectables[i].y + collectableHeight > player.y
     ) {
       collectables[i].collected = true;
+      player.collected += 1;
     }
   }
 }
