@@ -72,7 +72,8 @@ $(function () {
 
     createCollectable("wood", 500, 160);
     createCollectable("wood", 1060, 210);
-    createCollectable("wood", 650,430);
+    createCollectable("wood", 650, 430);
+    createCollectable("wood", 550, 400);
     
 
     
