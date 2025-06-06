@@ -26,10 +26,20 @@ $(function () {
     // ONLY CHANGE BELOW THIS POINT //
     //////////////////////////////////
 
-    //links for stuff
-    var kitchen = "https://media.istockphoto.com/id/879089468/vector/modern-kitchen-background.jpg?s=612x612&w=0&k=20&c=dnATtSigsfxVB6MOAwq-yhG1Pl_oW7rXDln-L1071Mo=";
-    var dust = "https://www.shutterstock.com/image-vector/soil-cartoon-vector-illustration-hand-600nw-1399845812.jpg";
-    
+    /*
+    ideas: lion king maybe idk
+    -level 1:
+      -save everyone(the cast) from monkeys
+      -get to place at end
+    -level 2:
+      -get the wood to make bridge
+    -level 3:
+      -get past big group of monkeys
+    -level 4:
+      -the people thank you and you get a bunch of money
+      -restarts when button click
+    */
+
     
     // TODO 1 - Enable the Grid
     //toggleGrid();
@@ -44,7 +54,7 @@ $(function () {
     createPlatform(700, 250, 50, 10, "green");
     createPlatform(850, 200, 50, 10, "green");
     createPlatform(1050, 250, 50, 10, "green");
-    createPlatform(1200, 150, 50, 10, "green");
+    
 
     //middle
     createPlatform(200, 300, 50, 10, "green");
@@ -69,16 +79,19 @@ $(function () {
 
 
     // TODO 3 - Create Collectables
+    if (player.level === 0){
+      createCollectable("max", 500, 160);
+      createCollectable("kennedi", 1060, 210);
+      createCollectable("grace", 650, 420);
+      createCollectable("diamond", 550, 360); 
+    }else{
+      createCollectable("max", 500, 160);
+    }
 
-    createCollectable("wood", 500, 160);
-    createCollectable("wood", 1060, 210);
-    createCollectable("wood", 650, 430);
-    createCollectable("wood", 550, 400);
-    
 
     
     // TODO 4 - Create Cannons
-
+    /*
     createCannon("right", 200, 2000);
     createCannon("right", 400, 3000);
     createCannon("right", 600, 4000);
@@ -87,7 +100,7 @@ $(function () {
     createCannon("bottom", 1050, 2000);
     createCannon("top", 950, 2000);
     createCannon("top", 450, 2000);
-
+    */
     
     
     //////////////////////////////////

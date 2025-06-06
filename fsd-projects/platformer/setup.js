@@ -28,6 +28,8 @@ const player = {
   facingRight: true,
   deadAndDeathAnimationDone: false,
   collected: 0,
+  moveOn: false,
+  level: 0,
 };
 
 let hitDx;

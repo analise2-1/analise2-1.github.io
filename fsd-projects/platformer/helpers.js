@@ -26,10 +26,19 @@ function main() {
     
   }
 
-   if (player.collected == attainables){
-    gameDone()
-    return;
+  if (player.collected == attainables){
+    createPlatform(1200, 150, 50, 10, "yellow");
+    player.moveOn = true; 
    }
+
+  if (1160 > player.x < 1250 && player.y == 66 && player.moveOn === true) {
+    player.level += 1;
+    gameDone();
+    return;
+  }
+
+  console.log(player)
+  //x: 1201, y: 66
 
   drawPlatforms();
   drawProjectiles();
@@ -46,7 +55,7 @@ function main() {
   collectablesCollide(); //checks if player has touched a collectable
 
   animate(); //this changes halle's picture to the next frame so it looks animated.
-  // debug()                   //debugging values. Comment this out when not debugging.
+  //debug()                   //debugging values. Comment this out when not debugging.
   drawRobot(); //this actually displays the image of the robot.
 }
 
@@ -409,7 +418,7 @@ function deathOfPlayer() {
 }
 
 function gameDone() {
-    ctx.fillStyle = "grey";
+  ctx.fillStyle = "grey";
   ctx.fillRect(
     canvas.width / 4,
     canvas.height / 6,
@@ -417,9 +426,9 @@ function gameDone() {
     canvas.height / 2
   );
   ctx.fillStyle = "black";
-  ctx.font = "450% serif";
+  ctx.font = "650% serif";
   ctx.fillText(
-    " Congrats you finished!",
+    "Everyone is safe",
     canvas.width / 4,
     canvas.height / 6 + canvas.height / 5,
     (canvas.width / 16) * 14
