@@ -32,6 +32,9 @@ const player = {
   level: 0,
 };
 
+
+
+
 let hitDx;
 let hitDy;
 let hitBoxWidth = 50 * playerScale;

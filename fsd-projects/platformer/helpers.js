@@ -16,6 +16,7 @@ function main() {
 
   if (player.deadAndDeathAnimationDone) {
     deathOfPlayer();
+    sessionStorage.setItem("level", "0");
     return;
   }
 
@@ -32,12 +33,18 @@ function main() {
    }
 
   if (1160 > player.x < 1250 && player.y == 66 && player.moveOn === true) {
-    player.level += 1;
-    gameDone();
+    console.log(check())
+    if (check() === true){
+      levelDone();
+      player.level = Number(sessionStorage.getItem("level") || 0) + 1;
+      sessionStorage.setItem("level", JSON.stringify(player.level));
+    }else{
+      gameDone();
+    }
     return;
   }
 
-  console.log(player)
+  console.log(sessionStorage.getItem("level"));
   //x: 1201, y: 66
 
   drawPlatforms();
@@ -57,6 +64,12 @@ function main() {
   animate(); //this changes halle's picture to the next frame so it looks animated.
   //debug()                   //debugging values. Comment this out when not debugging.
   drawRobot(); //this actually displays the image of the robot.
+}
+
+function check(){
+  var fakeLevel = Number(sessionStorage.getItem("level"));
+  fakeLevel += 1;
+  return fakeLevel <= 2;
 }
 
 function getJSON(url, callback) {
@@ -417,7 +430,7 @@ function deathOfPlayer() {
   }
 }
 
-function gameDone() {
+function levelDone() {
   ctx.fillStyle = "grey";
   ctx.fillRect(
     canvas.width / 4,
@@ -429,6 +442,35 @@ function gameDone() {
   ctx.font = "650% serif";
   ctx.fillText(
     "Everyone is safe",
+    canvas.width / 4,
+    canvas.height / 6 + canvas.height / 5,
+    (canvas.width / 16) * 14
+  );
+    ctx.font = "300% serif";
+  ctx.fillText(
+    "            Hit any key to restart",
+    canvas.width / 4,
+    canvas.height / 6 + canvas.height / 3,
+    (canvas.width / 16) * 14
+  );
+  if (keyPress.any) {
+    keyPress.any = false;
+    window.location.reload();
+  }
+}
+
+function gameDone() {
+    ctx.fillStyle = "grey";
+  ctx.fillRect(
+    canvas.width / 4,
+    canvas.height / 6,
+    canvas.width / 2,
+    canvas.height / 2
+  );
+  ctx.fillStyle = "black";
+  ctx.font = "650% serif";
+  ctx.fillText(
+    "Done!",
     canvas.width / 4,
     canvas.height / 6 + canvas.height / 5,
     (canvas.width / 16) * 14

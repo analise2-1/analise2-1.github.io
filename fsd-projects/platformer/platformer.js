@@ -79,15 +79,21 @@ $(function () {
 
 
     // TODO 3 - Create Collectables
-    if (player.level === 0){
+    
+    if (sessionStorage.getItem("level") === "0"){
+      //bear
       createCollectable("max", 500, 160);
-      createCollectable("kennedi", 1060, 210);
+      //main guy
+      createCollectable("kennedi", 200, 430);
+      //panther
       createCollectable("grace", 650, 420);
-      createCollectable("diamond", 550, 360); 
-    }else{
-      createCollectable("max", 500, 160);
+    }else if (sessionStorage.getItem("level") === "1"){
+      //vines
+      createCollectable("wood", 500, 160);
+      createCollectable("wood", 650, 420);
+      createCollectable("wood", 100, 410);
+      createCollectable("wood", 1100, 340);
     }
-
 
     
     // TODO 4 - Create Cannons
