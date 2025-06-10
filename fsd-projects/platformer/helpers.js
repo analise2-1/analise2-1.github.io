@@ -33,13 +33,13 @@ function main() {
    }
 
   if (1160 > player.x < 1250 && player.y == 66 && player.moveOn === true) {
-    console.log(check())
     if (check() === true){
       levelDone();
       player.level = Number(sessionStorage.getItem("level") || 0) + 1;
       sessionStorage.setItem("level", JSON.stringify(player.level));
     }else{
       gameDone();
+      sessionStorage.setItem("level", "0");
     }
     return;
   }
@@ -66,11 +66,11 @@ function main() {
   drawRobot(); //this actually displays the image of the robot.
 }
 
-function check(){
-  var fakeLevel = Number(sessionStorage.getItem("level"));
-  fakeLevel += 1;
-  return fakeLevel <= 2;
-}
+// function check(){
+//   var fakeLevel = Number(sessionStorage.getItem("level"));
+//   fakeLevel += 1;
+//   return fakeLevel <= 2;
+// }
 
 function getJSON(url, callback) {
   var xhr = new XMLHttpRequest();
