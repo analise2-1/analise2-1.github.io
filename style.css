@@ -21,78 +21,11 @@ nav {
     
 }
 
-/* main container area beneath menu */
-main {
-    background: rgb(245, 238, 219);
-    display: flex;
-    margin-top: 20px;
-    border-radius: 20px;
-}
-
-h1 {
-    display: flex;
-    align-items: center;
-    color: white;
-    flex: 1;
-    margin: 0;
-}
-
-.nav1 {
-  font-size: 50px;
-  background: rgb(239, 80, 41);
-  padding: 0 330px;
-  display: flex;
-  align-items: center;
-}
-
-#nav2 {
-    display: flex-end;
-    padding: 0 10px;
-    color: black;
-}
-
-.nav {
-  display: flex-end
-}
-
-a {
-    text-decoration: none;
-    color: #fff;
-}
-
-#intro {
-  display: flex;
-  align-self: center;
-}
-
-
-/* .sidebar {
-    margin-right: 25px;
-    padding: 10px;
-} */
-
-.sidebar-img {
-    width: 200px;
-}
-
 .content {
+  display: flex;
     flex: 1;
     padding: 15px;
-}
-
-.projectSection {
-  
-  display: flex;
-  align-items: center;
-}
-
-h2, h3 {
-    margin: 0px;
-}
-
-/* Portfolio styles */
-.content h1 {
-  color: black;
+  flex-direction: column;
 }
 
 #portfolio {
@@ -114,6 +47,80 @@ h2, h3 {
 #portfolio a {
   text-decoration: none;
   color: #454545;
+}
+
+main {
+    background: rgb(245, 238, 219);
+    display: flex;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    color: white;
+    flex: 1;
+    margin: 0;
+}
+
+.nav1 {
+  color: rgb(252, 249, 249);
+  font-size: 40px;
+  background: rgb(239, 80, 41);
+  padding: 0 330px;
+  display: flex;
+  align-items: center;
+}
+
+#nav2 {
+    /* margin-top: 20px; */
+    font-size: 20px;
+    padding: 0 10px;
+    color: black;
+}
+
+.nav {
+  display: flex-end
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#intro {
+  display: flex;
+  align-self: center;
+}
+
+#img {
+  align-self: center;
+  max-width: 50%;
+  max-height: 90%;
+}
+
+.content {
+  display: flex;
+    flex: 1;
+    padding: 15px;
+  flex-direction: column;
+}
+
+#projectSection {
+  align-self: center;
+  margin-top: 20px;
+  display:flex;
+  flex-direction: row;
+}
+
+h2, h3 {
+    margin: 0px;
+}
+
+/* Portfolio styles */
+.content h1 {
+  color: black;
 }
 
 @media screen and (min-width: 120px) and (max-width: 1080px) {
