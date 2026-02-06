@@ -41,6 +41,8 @@ h1 {
   font-size: 50px;
   background: rgb(239, 80, 41);
   padding: 0 330px;
+  display: flex;
+  align-items: center;
 }
 
 #nav2 {
@@ -58,11 +60,16 @@ a {
     color: #fff;
 }
 
+#intro {
+  display: flex;
+  align-self: center;
+}
 
-.sidebar {
+
+/* .sidebar {
     margin-right: 25px;
     padding: 10px;
-}
+} */
 
 .sidebar-img {
     width: 200px;
@@ -73,12 +80,10 @@ a {
     padding: 15px;
 }
 
-/* interests section styles */
-#interests {
-    /* border: 4px silver ridge; */
-    float: left;
-    padding: 8px;
-    margin-top: 20px;
+.projectSection {
+  
+  display: flex;
+  align-items: center;
 }
 
 h2, h3 {
