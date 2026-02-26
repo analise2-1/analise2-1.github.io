@@ -1,9 +1,21 @@
 #die {
     height: 100px;
     width: 100px;
-    background-color: lightgray;
-    display: flex;
-    justify-self: center;
-    align-content: space-around;
+    background-color: rgb(0, 0, 0);
+    /* position: absolute; */
+    display: grid;
+    inset: 45% 50% 50% 50%;
     border-radius: 10%;
+}
+/* #die2 {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    inset: 45% 50% 50% 43%;
+    border-radius: 10%;
+} */
+
+body {
+    background-color: lightgray;
 }

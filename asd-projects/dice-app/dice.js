@@ -1,57 +1,59 @@
 $(document).ready(function () {
   
-  function makeDot(top, left, elementID){
+  function makeDot(top, left, elementID, color){
     $("<div>")
     .css("height", 15)
     .css("width", 15)
-    .css("background-color", "black")
-    .css("display", "flex")
-    // .css("position", "relative")
-    // .css("aligne-self", "center")
-    .css("column-gap", top)
-    .css("row-gap", left)
+    .css("background-color", color)
+    .css("position", "absolute")
+    .css("top", top)
+    .css("left", left)
     .css("border-radius", "20%")
     .appendTo(elementID);
   }
 
-  function rollDie(dieID){
+  function rollDie(dieID, color){
     $(dieID).empty();
     var randomNum = Math.ceil(Math.random() * 6);
     if (randomNum === 1) {
-      makeDot(50, 50, dieID); // middle middle
+      makeDot(45, 45, dieID, color); // middle middle
     } else if (randomNum === 2) {
-      makeDot(25, 25, dieID); // top left
-      makeDot(75, 75, dieID); // bottom right
+      makeDot(20, 20, dieID, color); // top left
+      makeDot(70, 70, dieID, color); // bottom right
     } else if (randomNum === 3) {
-      makeDot(25, 25, dieID); // top left
-      makeDot(75, 75, dieID); // bottom right
-      makeDot(50, 50, dieID); // middle middle
+      makeDot(20, 20, dieID, color); // top left
+      makeDot(70, 70, dieID, color); // bottom right
+      makeDot(45, 45, dieID, color); // middle middle
     } else if (randomNum === 4) {
-      makeDot(75, 75, dieID); // bottom right
-      makeDot(25, 25, dieID); // top left
-      makeDot(25, 75, dieID); // bottom left
-      makeDot(75, 25, dieID); // top right
+      makeDot(70, 70, dieID, color); // bottom right
+      makeDot(20, 20, dieID, color); // top left
+      makeDot(20, 70, dieID, color); // bottom left
+      makeDot(70, 20, dieID, color); // top right
     } else if (randomNum === 5) {
-      makeDot(50, 50, dieID); // middle middle
-      makeDot(75, 75, dieID); // bottom right
-      makeDot(25, 25, dieID); // top left
-      makeDot(25, 75, dieID); // bottom left
-      makeDot(75, 25, dieID); // top right
+      makeDot(45, 45, dieID, color); // middle middle
+      makeDot(70, 70, dieID, color); // bottom right
+      makeDot(20, 20, dieID, color); // top left
+      makeDot(20, 70, dieID, color); // bottom left
+      makeDot(70, 20, dieID, color); // top right
     } else if (randomNum === 6) {
-      makeDot(25, 75, dieID);
-      makeDot(50, 75, dieID);
-      makeDot(75, 75, dieID);
-      makeDot(25, 25, dieID);
-      makeDot(50, 25, dieID);
-      makeDot(75, 25, dieID);
+      makeDot(20, 70, dieID, color);
+      makeDot(45, 70, dieID, color);
+      makeDot(70, 70, dieID, color);
+      makeDot(20, 20, dieID, color);
+      makeDot(45, 20, dieID, color);
+      makeDot(70, 20, dieID, color);
     }
   }
 
-  function handleClick(){
-    rollDie("#die")
+  function handleClick1(){
+    rollDie("#die", "white");
+  }
+  function handleClick2(){
+    rollDie("#die2", "black");
   }
 
-  $("#die").on("click", handleClick);
+  $("#die").on("click", handleClick1);
+  // $("#die2").on("click", handleClick2);
 
 });
 
