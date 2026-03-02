@@ -32,6 +32,9 @@ var KEY = {
   RIGHT: 39,
   DOWN: 40,
 };
+var colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+var colorIndex = 3;
+var thisKey;
 
 // interval variable required for stopping the update function when the game ends
 var updateInterval;
@@ -53,8 +56,11 @@ function init() {
   // TODO 5, Part 2: initialize the snake
   snake.body = [];
   makeSnakeSquare(10, 10);
+  snake.tail.element.css("backgroundColor", colors[colorIndex]);
   makeSnakeSquare(10, 9);
+  snake.tail.element.css("backgroundColor", colors[colorIndex]);
   makeSnakeSquare(10, 8);
+  snake.tail.element.css("backgroundColor", colors[colorIndex]);
   snake.head = snake.body[0];
   // console.log(snake.head);
 
@@ -86,6 +92,7 @@ function update() {
   if (hasCollidedWithApple()) {
     handleAppleCollision();
   }
+
 }
 
 function checkForNewDirection(event) {
@@ -96,14 +103,18 @@ function checkForNewDirection(event) {
   perpendicular to the current direction
   */
 
-  if (activeKey === KEY.LEFT) {
+  if (activeKey === KEY.LEFT && thisKey != "right") {
     snake.head.direction = "left";
-  } else if (activeKey === KEY.RIGHT) {
+    thisKey = "left";
+  } else if (activeKey === KEY.RIGHT && thisKey != "left") {
     snake.head.direction = "right";
-  } else if (activeKey === KEY.DOWN) {
+    thisKey = "right";
+  } else if (activeKey === KEY.DOWN && thisKey != "up") {
     snake.head.direction = "down";
-  } else if (activeKey === KEY.UP) {
+    thisKey = "down";
+  } else if (activeKey === KEY.UP && thisKey != "down") {
     snake.head.direction = "up";
+    thisKey = "up";
   }
 
   // FILL IN THE REST
@@ -196,6 +207,12 @@ function hasCollidedWithApple() {
   */
 
   if (snake.head.row === apple.row && snake.head.column === apple.column) {
+    if (colorIndex <= colors.length - 1){
+      colorIndex += 1;
+    }else{
+      console.log("color index back at 0 babyyy");
+      colorIndex = 0;
+    }
     return true;
   }
 
@@ -218,6 +235,7 @@ function handleAppleCollision() {
   var row = snake.tail.row;
 
   makeSnakeSquare(row, column);
+  // snake.tail.element.css("backgroundColor", colors[colorIndex]);
 }
 
 function hasCollidedWithSnake() {
@@ -251,6 +269,7 @@ function endGame() {
 
   // clear board of all elements
   board.empty();
+  colorIndex = 3;
 
   // update the highScoreElement to display the highScore
   highScoreElement.text("High Score: " + calculateHighScore());
@@ -293,6 +312,10 @@ function makeSnakeSquare(row, column) {
   }
   snake.body.push(SnakeSquare);
   snake.tail = SnakeSquare;
+  // for (let i = 1; i > snake.body.length; i++){
+  //   snake.body[i].element.css("backgroundColor", colors[colorIndex]);
+  // }
+  snake.tail.element.css("backgroundColor", colors[colorIndex]);
 }
 
 /* 
@@ -350,6 +373,11 @@ function getRandomAvailablePosition() {
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
 
+    for (let i = 0; i > snake.body.length; i++){
+      if (randomPosition.row === snake.body[i].row && randomPosition.column === snake.body[i].column || randomPosition.row === snake.head.row && randomPosition.column === snake.head.column){
+        spaceIsAvailable = false;
+      }
+    }
     /*
       TODO 14: After generating the random position determine if that position is
       not occupied by a snakeSquare in the snake's body. If it is then set 

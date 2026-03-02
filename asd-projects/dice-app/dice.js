@@ -16,21 +16,21 @@ $(document).ready(function () {
     $(dieID).empty();
     var randomNum = Math.ceil(Math.random() * 6);
     if (randomNum === 1) {
-      makeDot(45, 45, dieID, color); // middle middle
+      makeDot(42, 43, dieID, color); // middle middle
     } else if (randomNum === 2) {
       makeDot(20, 20, dieID, color); // top left
       makeDot(70, 70, dieID, color); // bottom right
     } else if (randomNum === 3) {
       makeDot(20, 20, dieID, color); // top left
       makeDot(70, 70, dieID, color); // bottom right
-      makeDot(45, 45, dieID, color); // middle middle
+      makeDot(42, 44, dieID, color); // middle middle
     } else if (randomNum === 4) {
       makeDot(70, 70, dieID, color); // bottom right
       makeDot(20, 20, dieID, color); // top left
       makeDot(20, 70, dieID, color); // bottom left
       makeDot(70, 20, dieID, color); // top right
     } else if (randomNum === 5) {
-      makeDot(45, 45, dieID, color); // middle middle
+      makeDot(42, 44, dieID, color); // middle middle
       makeDot(70, 70, dieID, color); // bottom right
       makeDot(20, 20, dieID, color); // top left
       makeDot(20, 70, dieID, color); // bottom left
