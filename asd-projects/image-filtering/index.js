@@ -2,7 +2,6 @@
 // as soon as the page loads.
 $(document).ready(function () {
   render($("#display"), image);
-  $("#apply").on("click", applyAndRender);
   $("#reset").on("click", resetAndRender);
 });
 
@@ -22,32 +21,25 @@ function resetAndRender() {
 // all of your apply functions
 function applyAndRender(x) {
   // Multiple TODOs: Call your apply function(s) here
-  if (x === 1){
+  if (x === "applyReddify") {
     $("#applyReddify").on("click", applyFilter(reddify));
-  }else if (x === 2){
+  } else if (x === "applyDecreaseBlue") {
     $("#applyDecreaseBlue").on("click", applyFilter(decreaseBlue));
-  }else if (x === 3){
+  } else if (x === "applyIncreaseGreenByBlue") {
     $("#applyIncreaseGreenByBlue").on("click", applyFilter(increaseGreenByBlue));
-  }else if (x === 4){
+  } else if (x === "applyPurpleTint") {
     $("#applyPurpleTint").on("click", applyFilter(purpleTint));
-  }else if (x === 5){
-    
-  }else if (x === 6){
-    
-  }else if (x === 7){
-    
-  }else if (x === 8){
-    
-  }else if (x === 9){
-    
+  } else if (x === "applyVintageFilter") {
+    $("#applyVintageFilter").on("click", applyFilter(vintageFilter));
+  } else if (x === "applyGrayscaleFilter") {
+    $("#applyGrayscaleFilter").on("click", applyFilter(grayscaleFilter));
+  } else if (x === "applyInvertFilter") {
+    $("#applyInvertFilter").on("click", applyFilter(invertFilter));
+  } else if (x === "applySmudgeFilter") {
+    $("#applySmudgeFilter").on("click", applyFilter(smudgeFilter));
+  } else if (x === "applyBlurFilter") {
+    $("#applyBlurFilter").on("click", applyFilter(blurFilter));
   }
-  $("#applyVintageFilter").on("click", applyFilter(vintageFilter));
-  $("#applyGrayscaleFilter").on("click", applyFilter(grayscaleFilter));
-  $("#applyInvertFilter").on("click", applyFilter(invertFilter));
-  $("#applySmudgeFilter").on("click", applyFilter(smudgeFilter));
-  $("#applyBlurFilter").on("click", applyFilter(blurFilter));
-
-  
 
   // do not change the below line of code
   render($("#display"), image);
@@ -59,8 +51,8 @@ function applyAndRender(x) {
 
 // TODO 1, 2, 3 & 5: Create the applyFilter function here
 function applyFilter(filterFunction) {
-  for (let i = 0; i < image.length; i++){
-    for (let j = 0; j < image[i].length; j++){
+  for (let i = 0; i < image.length; i++) {
+    for (let j = 0; j < image[i].length; j++) {
       // console.log(image[i][j]);
       var pixel = image[i][j];
       var pixelArray = rgbStringToArray(pixel);
@@ -70,76 +62,82 @@ function applyFilter(filterFunction) {
       image[i][j] = updatedPixel;
     }
   }
-
 }
 
 // TODO 9 Create the applyFilterNoBackground function
-function applyFilterNoBackground(filterFunction){
+function applyFilterNoBackground(filterFunction) {
   var backgroundColor = image[0][0];
-  for (let i = 0; i < image.length; i++){
-    for (let j = 0; j < image[i].length; j++){
-      if (image[i][j] !== backgroundColor){
+  for (let i = 0; i < image.length; i++) {
+    for (let j = 0; j < image[i].length; j++) {
+      if (image[i][j] !== backgroundColor) {
         var pixelArray = rgbStringToArray(image[i][j]);
         filterFunction(pixelArray);
         var updatedPixel = rgbArrayToString(pixelArray);
         image[i][j] = updatedPixel;
-
       }
     }
   }
 }
 
 // TODO 6: Create the keepInBounds function
-function keepInBounds(number){
+function keepInBounds(number) {
   return number < 0 ? 0 : number > 255 ? 255 : number;
 }
 
 // TODO 4: Create reddify filter function
-function reddify(aPixelArray){
-  if (aPixelArray[RED] < 200){
+function reddify(aPixelArray) {
+  if (aPixelArray[RED] < 200) {
     var amount = 200 - aPixelArray[RED];
     aPixelArray[RED] += amount;
   }
 }
 
 // TODO 7 & 8: Create more filter functions
-function decreaseBlue(aPixelArray){
+function decreaseBlue(aPixelArray) {
   aPixelArray[BLUE] -= 50;
   keepInBounds(aPixelArray[BLUE]);
 }
 
-function increaseGreenByBlue(aPixelArray){
+function increaseGreenByBlue(aPixelArray) {
   let bluePixel = aPixelArray[BLUE];
-  let greenPixel = aPixelArray[GREEN]; 
+  let greenPixel = aPixelArray[GREEN];
   greenPixel += bluePixel;
   keepInBounds(greenPixel);
   aPixelArray[GREEN] = greenPixel;
 }
 
 // CHALLENGE code goes below here
-function purpleTint(aPixelArray){
+function purpleTint(aPixelArray) {
   aPixelArray[RED] += 100;
   keepInBounds(aPixelArray[RED]);
   aPixelArray[BLUE] += 100;
   keepInBounds(aPixelArray[BLUE]);
 }
+         
+var currentSquare = image[0][0];
+var a = 0;
 
-function vintageFilter(){
-
+function vintageFilter(aPixelArray) {
+  for (let i = 0; i < image.length; i++) {
+    for (let j = 0; j < image[i].length; j++) {
+      if (currentSquare === aPixelArray){
+        if (a === 0 && j === )
+        currentSquare = image[i+1][j+1];
+      }
+    }
+  }
+  
+  
 }
 
-function grayscaleFilter(){
+function grayscaleFilter() {}
 
+function invertFilter(aPixelArray) {
+  aPixelArray[RED] = 255 - aPixelArray[RED];
+  aPixelArray[BLUE] = 255 - aPixelArray[BLUE];
+  aPixelArray[GREEN] = 255 - aPixelArray[GREEN];
 }
 
-function invertFilter(){
+function smudgeFilter() {}
 
-}
-
-function smudgeFilter(){
-
-}
-
-function blurFilter(){
-
-}
+function blurFilter() {}
