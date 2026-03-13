@@ -114,23 +114,30 @@ function purpleTint(aPixelArray) {
   keepInBounds(aPixelArray[BLUE]);
 }
          
-var currentSquare = image[0][0];
-var a = 0;
-
 function vintageFilter(aPixelArray) {
-  for (let i = 0; i < image.length; i++) {
-    for (let j = 0; j < image[i].length; j++) {
-      if (currentSquare === aPixelArray){
-        if (a === 0 && j === )
-        currentSquare = image[i+1][j+1];
-      }
-    }
+  if (aPixelArray[RED] >= 127 && aPixelArray[GREEN] >= 127 && aPixelArray[BLUE] >= 127){
+    aPixelArray[RED] += 50;
+    aPixelArray[GREEN] += 50;
+    aPixelArray[BLUE] += 50;
+  } else {
+    aPixelArray[RED] -= 50;
+    aPixelArray[GREEN] -= 50;
+    aPixelArray[BLUE] -= 50;
   }
-  
-  
+  keepInBounds(aPixelArray[RED]);
+  keepInBounds(aPixelArray[GREEN]);
+  keepInBounds(aPixelArray[BLUE]);
 }
 
-function grayscaleFilter() {}
+function grayscaleFilter(aPixelArray) {
+  var Red = aPixelArray[RED];
+  var Green = aPixelArray[GREEN];
+  var Blue = aPixelArray[BLUE];
+  var sum = (Red + Green + Blue) / 3;
+  aPixelArray[RED] = sum;
+  aPixelArray[GREEN] = sum;
+  aPixelArray[BLUE] = sum;
+}
 
 function invertFilter(aPixelArray) {
   aPixelArray[RED] = 255 - aPixelArray[RED];
@@ -138,6 +145,32 @@ function invertFilter(aPixelArray) {
   aPixelArray[GREEN] = 255 - aPixelArray[GREEN];
 }
 
-function smudgeFilter() {}
+function smudgeFilter(aPixelArray) {
+  var red = aPixelArray[RED];
+  var blue = aPixelArray[BLUE];
+  var green = aPixelArray[GREEN];
+  var pixelString = "rgb("+red+", "+blue+", "+green+")";
+  for (let i = 0; i < image.length; i++) {
+    for (let j = 0; j < image[i].length; j++) {
+      console.log("pixel array: "+ aPixelArray);
+      console.log("pixel string: " + pixelString);
+      console.log("image: " + image[i][j]);
+      if (pixelString === image[i][j]){
+        var nxtP = rgbStringToArray(image[i+1][j]);
+        var nxtR = nxtP[0];
+        var nxtG = nxtP[1];
+        var nxtB = nxtP[2];
+        aPixelArray[RED] += nxtR
+      }
+    }
+  }
+  // keepInBounds(aPixelArray[RED]);
+  // keepInBounds(aPixelArray[GREEN]);
+  // keepInBounds(aPixelArray[BLUE]);
+}
 
-function blurFilter() {}
+var blurArray = {};
+
+function blurFilter() {
+
+}
